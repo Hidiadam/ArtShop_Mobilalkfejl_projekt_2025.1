@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">ArtShop</string>
+
+    <!-- Login & Register -->
+    <string name="login_title">Bejelentkezés</string>
+    <string name="registration">Regisztráció</string>
+    <string name="email_address">Email cím</string>
+    <string name="password">Jelszó</string>
+    <string name="login">Bejelentkezés</string>
+    <string name="registration_prompt">Nincs még fiókod? Regisztrálj!</string>
+    <string name="user_name_optional">Felhasználónév (opcionális)</string>
+    <string name="email_address_mandatory">Email cím (kötelező)</string>
+    <string name="password_mandatory">Jelszó (min. 6 karakter)</string>
+    <string name="password_again">Jelszó újra</string>
+    <string name="cancel">Mégse</string>
+    <string name="app_logo_description">Alkalmazás logó</string>
+
+    <!-- Art List -->
+    <string name="search">Keresés…</string>
+    <string name="cart">Kosár</string>
+    <string name="logout">Kijelentkezés</string>
+    <string name="settings">Beállítások</string>
+    <string name="add_artwork">Új mű</string> <!-- Új string -->
+    <string name="empty_list_message">Nincsenek megjeleníthető műalkotások.</string>
+    <string name="artwork_image_description">Műalkotás képe</string>
+    <string name="add_to_cart">Kosárba</string>
+    <string name="artist_label">Alkotó: %1$s</string> <!-- Formázott string -->
+    <string name="cart_icon_description">Bevásárlókosár ikon</string>
+
+
+    <!-- Sample Artwork Data (Arrays) - Helyezd ide a saját adataidat -->
+    <string-array name="artwork_titles">
+        <item>Absztrakt Kompozíció</item>
+        <item>Csendélet Kancsóval</item>
+        <item>Városi Fények</item>
+        <item>Téli Táj</item>
+        <item>Női Portré</item>
+        <item>Geometrikus Formák</item>
+    </string-array>
+    <string-array name="artwork_descriptions">
+        <item>Modern absztrakt festmény élénk színekkel.</item>
+        <item>Klasszikus olajfestmény, realista stílusban.</item>
+        <item>Impresionista alkotás az éjszakai városról.</item>
+        <item>Akvarell festmény egy havas tájról.</item>
+        <item>Finom vonalvezetésű pasztell portré.</item>
+        <item>Minimalista grafika geometrikus elemekkel.</item>
+    </string-array>
+    <string-array name="artwork_prices">
+        <item>120 000 Ft</item>
+        <item>85 000 Ft</item>
+        <item>210 000 Ft</item>
+        <item>60 000 Ft</item>
+        <item>95 000 Ft</item>
+        <item>45 000 Ft</item>
+    </string-array>
+    <string-array name="artwork_artists">
+        <item>Kiss Géza</item>
+        <item>Nagy Mária</item>
+        <item>Varga Péter</item>
+        <item>Szabó Éva</item>
+        <item>Kovács László</item>
+        <item>Tóth Zsuzsanna</item>
+    </string-array>
+
+    <!-- Image resources - Győződj meg róla, hogy ezek a drawable-k léteznek! -->
+    <array name="artwork_images">
+        <item>@drawable/artwork_abstract</item>
+        <item>@drawable/artwork_still_life</item>
+        <item>@drawable/artwork_city_lights</item>
+        <item>@drawable/artwork_winter</item>
+        <item>@drawable/artwork_portrait</item>
+        <item>@drawable/artwork_geometric</item>
+    </array>
+
+</resources>

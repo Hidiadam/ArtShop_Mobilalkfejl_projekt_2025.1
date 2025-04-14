@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "495696749597",
+    "project_id": "artshopgemini-88d8f",
+    "storage_bucket": "artshopgemini-88d8f.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:495696749597:android:b3ed08bc5f43d2677e12f4",
+        "android_client_info": {
+          "package_name": "com.example.artshop"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2Rgf_0TxI9N4hm68DCQQN7AO9ipldWvs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

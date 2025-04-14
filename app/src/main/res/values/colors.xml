@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="purple_200">#D87040</color>      <!-- Réz/Égetett Narancs/Terrakotta - Gombokhoz, aktív elemekhez -->
+    <color name="purple_500">#D87040</color>      <!-- Barnás Szürke (Brown Grey 400) - Másodlagos elemekhez, finom kiemelésekhez -->
+    <color name="purple_700">#3E2723</color>      <!-- Mély Barnás Szürke (Brown 900) - Sötétebb felületi elemekhez -->
+    <color name="teal_200">#A1887F</color>      <!-- Ugyanaz a barnás szürke -->
+    <color name="teal_700">#D87040</color>      <!-- Ugyanaz a réz/terrakotta -->
+    <color name="black">#262626</color>         <!-- Meleg tónusú, sötét szürke háttér -->
+    <color name="white">#F5F5F5</color>         <!-- Nagyon világos, meleg szürke (Off-white) - Szöveghez -->
+    <color name="red_alert">#E57373</color>     <!-- Tompított Piros (Red 300) - Riasztáshoz -->
+</resources>

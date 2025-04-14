@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/card_margin"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    app:cardElevation="@dimen/card_elevation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/artworkImage"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/artwork_image_description"
+            app:layout_constraintDimensionRatio="H,16:9"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <TextView
+            android:id="@+id/artworkTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Title"
+            app:layout_constraintTop_toBottomOf="@id/artworkImage"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/artworkRating"
+            tools:text="Műalkotás Címe Nagyon Hosszú Cím" />
+
+        <RatingBar
+            android:id="@+id/artworkRating"
+            style="?android:attr/ratingBarStyleSmall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:isIndicator="true"
+            android:numStars="5"
+            android:stepSize="0.1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/artworkTitle"
+            app:layout_constraintBottom_toBottomOf="@id/artworkTitle"
+            tools:rating="4.5" />
+
+        <TextView
+            android:id="@+id/artworkArtist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@+id/artworkTitle"
+            app:layout_constraintStart_toStartOf="@+id/artworkTitle"
+            app:layout_constraintEnd_toEndOf="@+id/artworkTitle"
+            tools:text="Alkotó: Ismert Művész" />
+
+
+        <TextView
+            android:id="@+id/artworkDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1"
+            app:layout_constraintTop_toBottomOf="@+id/artworkArtist"
+            app:layout_constraintStart_toStartOf="@+id/artworkArtist"
+            app:layout_constraintEnd_toEndOf="@+id/artworkRating"
+            tools:text="Rövid leírása a műalkotásnak, ami lehet hosszabb is..." />
+
+        <TextView
+            android:id="@+id/artworkPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Subhead"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintTop_toBottomOf="@id/artworkDescription"
+            app:layout_constraintStart_toStartOf="@+id/artworkDescription"
+            tools:text="150 000 Ft" />
+
+        <Button
+            android:id="@+id/buttonAddToCart"
+            style="@style/Widget.MaterialComponents.Button.TextButton.Icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="8dp"
+            android:text="@string/add_to_cart"
+            app:icon="@drawable/baseline_shopping_cart_24"
+            app:layout_constraintTop_toBottomOf="@id/artworkPrice"
+            app:layout_constraintEnd_toEndOf="@+id/artworkDescription"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.cardview.widget.CardView>
