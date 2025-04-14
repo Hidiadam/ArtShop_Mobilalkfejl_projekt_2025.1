@@ -18,7 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 public class RegisterActivity extends AppCompatActivity {
     private static final String LOG_TAG = RegisterActivity.class.getName();
 
-    EditText userNameEditText; // Opcionális, most nem használjuk a regisztrációhoz
+    EditText userNameEditText;
     EditText userEmailEditText;
     EditText passwordEditText;
     EditText passwordConfirmEditText;
@@ -31,10 +31,10 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
 
         // Inicializálás
-        userNameEditText = findViewById(R.id.editTextUserName); // Ha van ilyen meződ
-        userEmailEditText = findViewById(R.id.editTextUserEmailReg); // Fontos az egyedi ID!
-        passwordEditText = findViewById(R.id.editTextPasswordReg); // Fontos az egyedi ID!
-        passwordConfirmEditText = findViewById(R.id.editTextPasswordConfirm); // Fontos az egyedi ID!
+        userNameEditText = findViewById(R.id.editTextUserName);
+        userEmailEditText = findViewById(R.id.editTextUserEmailReg);
+        passwordEditText = findViewById(R.id.editTextPasswordReg);
+        passwordConfirmEditText = findViewById(R.id.editTextPasswordConfirm);
 
         mAuth = FirebaseAuth.getInstance();
 
@@ -58,7 +58,7 @@ public class RegisterActivity extends AppCompatActivity {
         String email = userEmailEditText.getText().toString();
         String password = passwordEditText.getText().toString();
         String passwordConfirm = passwordConfirmEditText.getText().toString();
-        // String userName = userNameEditText.getText().toString(); // Ha használnád
+        // String userName = userNameEditText.getText().toString(); // Ha később szükség lenne rá
 
         if (email.isEmpty() || password.isEmpty() || passwordConfirm.isEmpty()) {
             Toast.makeText(this, "Minden mező kitöltése kötelező!", Toast.LENGTH_SHORT).show();
@@ -68,13 +68,13 @@ public class RegisterActivity extends AppCompatActivity {
         if (!password.equals(passwordConfirm)) {
             Log.e(LOG_TAG, "Passwords do not match.");
             Toast.makeText(this, "A két jelszó nem egyezik!", Toast.LENGTH_SHORT).show();
-            passwordEditText.setText(""); // Jelszavak törlése hiba esetén
+            passwordEditText.setText("");
             passwordConfirmEditText.setText("");
-            passwordEditText.requestFocus(); // Fókusz a jelszó mezőre
+            passwordEditText.requestFocus();
             return;
         }
 
-        // Validációk (opcionális, de ajánlott):
+        // Validációk:
         // - Email formátum ellenőrzése (Patterns.EMAIL_ADDRESS)
         // - Jelszó erősség ellenőrzése (pl. min. 6 karakter)
         if (password.length() < 6) {
@@ -107,12 +107,11 @@ public class RegisterActivity extends AppCompatActivity {
 
     private void goToArtList() {
         Intent intent = new Intent(this, ArtListActivity.class);
-        // intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Ne lehessen visszalépni a regisztrációhoz
         startActivity(intent);
-        finishAffinity(); // Bezárja ezt és a mögötte lévő (pl. Login) Activity-ket is, hogy ne lehessen visszalépni
+        finishAffinity();
     }
 
-    // Lifecycle logolás (jó gyakorlat)
+    // Lifecycle logolás
     @Override protected void onStart() { super.onStart(); Log.i(LOG_TAG, "onStart"); }
     @Override protected void onStop() { super.onStop(); Log.i(LOG_TAG, "onStop"); }
     @Override protected void onDestroy() { super.onDestroy(); Log.i(LOG_TAG, "onDestroy"); }

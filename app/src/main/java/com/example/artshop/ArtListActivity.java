@@ -196,7 +196,6 @@ public class ArtListActivity extends AppCompatActivity {
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
-                // Általában nem kell külön kezelni, az onQueryTextChange elég
                 return false;
             }
 
@@ -207,7 +206,7 @@ public class ArtListActivity extends AppCompatActivity {
                 // Fontos: Ha newText üres, az adapternek vissza kell állítania a teljes listát!
                 mAdapter.setShouldAnimate(newText.isEmpty());
                 mAdapter.getFilter().filter(newText);
-                return true; // Jelzi, hogy kezeltük az eseményt
+                return true;
             }
 
 
@@ -219,7 +218,7 @@ public class ArtListActivity extends AppCompatActivity {
                 // Elrejti a többi menüpontot, amikor a kereső kibont vagy
                 setMenuItemsVisibility(false);
                 Log.d(LOG_TAG, "Search view expanded, hiding other menu items.");
-                return true; // Visszaadjuk, hogy engedélyezzük a kibontást
+                return true;
             }
 
             @Override
@@ -229,7 +228,7 @@ public class ArtListActivity extends AppCompatActivity {
                 Log.d(LOG_TAG, "Search view collapsed, restoring menu items.");
                 // Kiürítjük a szűrőt az adapterben
                 mAdapter.getFilter().filter("");
-                return true; // Visszaadjuk, hogy engedélyezzük az összehúzást
+                return true;
             }
         });
 
@@ -237,41 +236,35 @@ public class ArtListActivity extends AppCompatActivity {
         MenuItemCompat.setOnActionExpandListener(searchItem, new MenuItemCompat.OnActionExpandListener() {
             @Override
             public boolean onMenuItemActionExpand(@NonNull MenuItem item) {
-                // Kereső kinyílt (nem szükséges teendő itt általában)
                 setMenuItemsVisibility(false);
                 Log.d(LOG_TAG, "Search view expanded, hiding other menu items.");
-                return true; // Visszatérés true, hogy engedélyezzük a kinyitást
+                return true;
             }
 
             @Override
             public boolean onMenuItemActionCollapse(@NonNull MenuItem item) {
-                // Ha a kereső összezárul, visszaállíthatjuk a többi menüelemet.
                 setMenuItemsVisibility(true);
-                // Kereső bezárult (pl. vissza gomb, 'X' ikon)
                 Log.d(LOG_TAG, "Search view collapsed, clearing filter.");
                 // Ürítjük a szűrőt az adapterben egy üres string átadásával
-                mAdapter.getFilter().filter(""); // Ennek vissza kell állítania a teljes listát
-                return true; // Visszatérés true, hogy engedélyezzük a bezárást
+                mAdapter.getFilter().filter("");
+                return true;
             }
         });
-
         return true;
     }
 
-    // Segédfüggvény, amely elrejti vagy megjeleníti a többi menüelemet
+
     private void setMenuItemsVisibility(boolean visible) {
-        // Ezek az ID-k az általad használt menüpontok
         if(mMenu != null) {
             mMenu.findItem(R.id.cart).setVisible(visible);
             mMenu.findItem(R.id.add_new_artwork).setVisible(visible);
             mMenu.findItem(R.id.log_out_button).setVisible(visible);
-            // Ha vannak egyéb menüpontjaid, itt add hozzá őket.
         }
     }
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        int itemId = item.getItemId(); // Használj ID-t a switch-hez
+        int itemId = item.getItemId();
 
         if (itemId == R.id.log_out_button) {
             Log.d(LOG_TAG, "Logout clicked!");
@@ -281,7 +274,7 @@ public class ArtListActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Töröljük a back stack-et
             startActivity(intent);
-            finish(); // Bezárjuk ezt az activity-t
+            finish();
             return true;
         } else if (itemId == R.id.cart) {
             Log.d(LOG_TAG, "Cart clicked!");
@@ -294,17 +287,17 @@ public class ArtListActivity extends AppCompatActivity {
             // Ide jöhetne az új műalkotás hozzáadása Activity indítása (CRUD - Create)
             return true;
         }
-        // else if (itemId == R.id.settings_button) { ... } // Beállításokhoz
+        // else if (itemId == R.id.settings_button) { ... } // Egyéb gombokhoz
         else {
             return super.onOptionsItemSelected(item);
         }
     }
 
-    // Kosár ikon előkészítése (ha használod a custom layoutot)
+    // Kosár ikon előkészítése
     @Override
     public boolean onPrepareOptionsMenu(Menu menu) {
         final MenuItem alertMenuItem = menu.findItem(R.id.cart);
-        FrameLayout rootView = (FrameLayout) alertMenuItem.getActionView(); // Vigyázz, null lehet, ha nincs actionLayout!
+        FrameLayout rootView = (FrameLayout) alertMenuItem.getActionView();
 
         if (rootView != null) {
             redCircle = rootView.findViewById(R.id.view_alert_red_circle);
@@ -315,19 +308,15 @@ public class ArtListActivity extends AppCompatActivity {
         } else {
             Log.w(LOG_TAG, "Cart ActionLayout not found!");
         }
-
-
         return super.onPrepareOptionsMenu(menu);
     }
 
-    // Kosár ikon frissítése (ezt hívja meg az adapter)
     public void updateCartIcon() {
         cartItems++; // Növeljük a számlálót (ez csak demo)
         if (countTextView == null || redCircle == null) {
             Log.w(LOG_TAG, "Cart count TextView or redCircle is null in updateCartIcon");
-            return; // Kilépünk, ha a nézetek még nincsenek inicializálva
+            return;
         }
-
         if (cartItems > 0) {
             countTextView.setText(String.valueOf(cartItems));
             redCircle.setVisibility(VISIBLE);

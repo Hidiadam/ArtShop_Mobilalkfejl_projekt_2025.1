@@ -1,18 +1,17 @@
 package com.example.artshop.model;
 
 public class ArtworkItem {
-    private String id; // Firestore dokumentum ID-hoz (később lesz fontos)
+    private String id; // Firestore dokumentum ID-hoz (később Firestore-hoz)
     private String title;
     private String description;
     private String price;
     private float rating;
     private int imageResource; // Helyi kép erőforrás ID (később lehet URL a Firebase Storage-ból)
-    private String artist; // Példa jövőbeli bővítésre
+    private String artist;
 
     // Üres konstruktor a Firestore számára (később lesz fontos)
     public ArtworkItem() {}
 
-    // Konstruktor a kezdeti adatokhoz
     public ArtworkItem(String title, String description, String price, float rating, int imageResource, String artist) {
         this.title = title;
         this.description = description;
@@ -22,7 +21,7 @@ public class ArtworkItem {
         this.artist = artist;
     }
 
-    // --- Getters (és Setters, ha kell) ---
+    // --- Getters ---
     public String getId() { return id; }
     public void setId(String id) { this.id = id; } // Később kellhet a Firestore ID beállításához
 

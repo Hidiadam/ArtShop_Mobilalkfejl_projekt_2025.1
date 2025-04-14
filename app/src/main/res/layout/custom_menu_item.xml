@@ -1,26 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
-    android:layout_height="match_parent"
-    android:clipToPadding="false"
-    style="?android:attr/actionButtonStyle"> <!-- Fontos a stílus! -->
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
+    <!-- Cart Icon -->
     <ImageView
         android:id="@+id/cart_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
         android:src="@drawable/baseline_shopping_cart_24"
-        android:contentDescription="@string/cart_icon_description" />
+        android:contentDescription="@string/cart_icon_description"
+        android:padding="8dp" />
 
+    <!-- Badge -->
     <FrameLayout
         android:id="@+id/view_alert_red_circle"
         android:layout_width="16dp"
         android:layout_height="16dp"
         android:layout_gravity="top|end"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="4dp"
+        android:translationX="-1dp"
+        android:translationY="-1dp"
         android:background="@drawable/circle_background"
         android:visibility="gone"
         tools:visibility="visible">
@@ -31,7 +32,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="10sp"
+            android:textSize="10dp"
             tools:text="9+" />
     </FrameLayout>
 

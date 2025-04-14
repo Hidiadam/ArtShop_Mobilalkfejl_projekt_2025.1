@@ -1,17 +1,16 @@
 plugins {
     id("com.android.application")
-    // Firebase BoM (Bill of Materials) használata
-    id("com.google.gms.google-services") // Firebase plugin
+    id("com.google.gms.google-services")
 }
 
 android {
-    namespace = "com.example.artshop" // Módosítsd a saját csomagnevedre
-    compileSdk = 35 // Vagy a legfrissebb stabil SDK (you had 35 in your example, using it here)
+    namespace = "com.example.artshop"
+    compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.artshop" // Módosítsd a saját csomagnevedre
-        minSdk = 24 // API Level 24 (Android 7.0) vagy magasabb ajánlott
-        targetSdk = 35 // Matching compileSdk for consistency, you can adjust if needed
+        applicationId = "com.example.artshop"
+        minSdk = 23
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
@@ -20,16 +19,16 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false // minifyEnabled -> isMinifyEnabled in Kotlin DSL
+            isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro") // Function call syntax is similar
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8 // JavaVersion.VERSION_1_8 is already a constant, no change needed
-        targetCompatibility = JavaVersion.VERSION_1_8   // JavaVersion.VERSION_1_8 is already a constant, no change needed
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
     }
     buildFeatures {
-        viewBinding = false // viewBinding -> viewBinding in Kotlin DSL, assignment with =
+        viewBinding = false
     }
 }
 
@@ -41,20 +40,11 @@ dependencies {
     implementation(libs.cardview)
     implementation(libs.recyclerview)
 
-    // Firebase BoM (egységes verziókezelés)
     implementation(platform(libs.firebase.bom))
-
-    // Firebase Authentication
     implementation(libs.firebase.auth)
-
-    // Firebase Cloud Firestore (később kell a CRUD-hoz, de már most hozzáadhatod)
     implementation(libs.firebase.firestore)
-
     // Glide (Képbetöltéshez)
     implementation(libs.glide)
-    // annotationProcessor("com.github.bumptech.glide:compiler:4.12.0") // Glide v4.12+ nem igényel külön processzort - Commented out as in original
-
-    // Testing dependencies
     testImplementation(libs.junit)
     androidTestImplementation(libs.junit.v115)
     androidTestImplementation(libs.espresso.core.v351)

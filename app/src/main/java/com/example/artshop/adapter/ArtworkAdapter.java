@@ -41,7 +41,7 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ViewHold
     public ArtworkAdapter(Context context, ArrayList<ArtworkItem> itemsData) {
         this.mContext = context;
         this.mArtworkData = itemsData;
-        this.mArtworkDataAll = new ArrayList<>(itemsData); // Másolat készítése!
+        this.mArtworkDataAll = new ArrayList<>(itemsData);
         Log.d(LOG_TAG, "Adapter created with " + itemsData.size() + " items.");
     }
 
@@ -59,7 +59,7 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ViewHold
         holder.bindTo(currentItem);
 
 
-        // Csak akkor alkalmazzuk az animációt, ha shouldAnimate true
+        // Csak akkor alkalmazzuk az animációt, ha shouldAnimate true (keresés közbeni animáció megadakályozására)
         if (shouldAnimate && holder.getAbsoluteAdapterPosition() > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(mContext, R.anim.slide_in_row);
             holder.itemView.startAnimation(animation);
@@ -92,12 +92,12 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ViewHold
             mPriceText = itemView.findViewById(R.id.artworkPrice);
             mItemImage = itemView.findViewById(R.id.artworkImage);
             mRatingBar = itemView.findViewById(R.id.artworkRating);
-            mArtistText = itemView.findViewById(R.id.artworkArtist); // ID hozzárendelése
+            mArtistText = itemView.findViewById(R.id.artworkArtist);
             mAddToCartButton = itemView.findViewById(R.id.buttonAddToCart);
 
             // Kosárba gomb eseménykezelője
             mAddToCartButton.setOnClickListener(v -> {
-                int position = getAbsoluteAdapterPosition(); // Biztonságos pozíció lekérdezés
+                int position = getAbsoluteAdapterPosition();
                 if (position != RecyclerView.NO_POSITION) {
                     ArtworkItem clickedItem = mArtworkData.get(position);
                     Log.d(LOG_TAG, "Add to cart clicked for: " + clickedItem.getTitle());
@@ -132,7 +132,7 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ViewHold
             mDescriptionText.setText(currentItem.getDescription());
             mPriceText.setText(currentItem.getPrice());
             mRatingBar.setRating(currentItem.getRating());
-            mArtistText.setText(mContext.getString(R.string.artist_label, currentItem.getArtist())); // Formázott string használata
+            mArtistText.setText(mContext.getString(R.string.artist_label, currentItem.getArtist()));
 
             // Kép betöltése Glide-dal (kezeli a gyorsítótárazást, átméretezést)
             Glide.with(mContext)
@@ -162,7 +162,7 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ViewHold
                 return results;
             }
 
-            // Normalizáld a constraint-et, és alakítsd kisbetűssé
+            // Ékezetek eltávolítása, kisbetűssé aalkítás
             String filterPattern = (constraint == null) ? "" : removeAccents(constraint.toString().toLowerCase(Locale.ROOT)).trim();
 
             if (filterPattern.isEmpty()) {
@@ -170,7 +170,6 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ViewHold
                 results.values = mArtworkDataAll;
             } else {
                 for (ArtworkItem item : mArtworkDataAll) {
-                    // Először is alakítsuk kisbetűsre és normalizáljuk az összehasonlítandó stringeket
                     String titleLower = removeAccents(item.getTitle() != null ? item.getTitle().toLowerCase(Locale.ROOT) : "");
                     String descLower = removeAccents(item.getDescription() != null ? item.getDescription().toLowerCase(Locale.ROOT) : "");
                     String artistLower = removeAccents(item.getArtist() != null ? item.getArtist().toLowerCase(Locale.ROOT) : "");
@@ -190,22 +189,17 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ViewHold
             // Töröljük az aktuálisan megjelenített listát (mArtworkData)
             mArtworkData.clear();
             if (results.values != null) {
-                // Biztonságos castolás és a szűrt (vagy teljes) lista hozzáadása mArtworkData-hoz
                 try {
-                    // Fontos! Az eredmény (results.values) lehet mArtworkDataAll vagy a filteredList
-                    // Mindkettő ArrayList<ArtworkItem> kell legyen.
                     mArtworkData.addAll((ArrayList<ArtworkItem>) results.values);
                     Log.d(LOG_TAG, "Publishing filter results, new data size: " + mArtworkData.size());
                 } catch (ClassCastException | NullPointerException e) {
                     Log.e(LOG_TAG, "Error casting or adding filter results", e);
-                    // Hiba esetén próbáljuk meg visszaállítani a teljes listát, ha lehetséges
                     if (mArtworkDataAll != null) {
                         mArtworkData.addAll(mArtworkDataAll);
                     }
                 }
             } else {
                 Log.w(LOG_TAG, "Filter results values are null. Check performFiltering.");
-                // Ha null az eredmény, és van teljes listánk, állítsuk vissza azt
                 if (mArtworkDataAll != null) {
                     mArtworkData.addAll(mArtworkDataAll);
                 }
@@ -216,17 +210,16 @@ public class ArtworkAdapter extends RecyclerView.Adapter<ArtworkAdapter.ViewHold
                 // Itt jelezhetünk a felhasználónak, pl. egy TextView láthatóvá tételével
                 Toast.makeText(mContext, R.string.empty_list_message, Toast.LENGTH_SHORT).show();
             }
-
-            notifyDataSetChanged(); // Értesítjük az adaptert a változásról
-            lastPosition = -1; // Reseteljük az animáció pozícióját szűrés után
+            notifyDataSetChanged();
+            lastPosition = -1;
         }
     };
 
-    // Ezt a metódust használd, ha kívülről frissíted az adatokat (pl. Firestore lekérdezés után)
+    // Ha kívülről frissíted az adatokat (pl. Firestore lekérdezés után)
     public void updateData(ArrayList<ArtworkItem> newData) {
         mArtworkData.clear();
         mArtworkData.addAll(newData);
-        mArtworkDataAll = new ArrayList<>(newData); // Frissítjük a teljes listát is
+        mArtworkDataAll = new ArrayList<>(newData);
         notifyDataSetChanged();
         lastPosition = -1;
         Log.i(LOG_TAG, "Adapter data updated externally. mArtworkDataAll size: " + mArtworkDataAll.size());

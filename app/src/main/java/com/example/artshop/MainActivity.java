@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        emailET = findViewById(R.id.editTextUserEmail); // Név alapján azonosítunk
+        emailET = findViewById(R.id.editTextUserEmail);
         passwordET = findViewById(R.id.editTextPassword);
 
         preferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
@@ -80,19 +80,17 @@ public class MainActivity extends AppCompatActivity {
 
     private void goToArtList() {
         Intent intent = new Intent(this, ArtListActivity.class);
-        // intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK); // Ne lehessen visszalépni a loginhoz
         startActivity(intent);
-        finish(); // Bezárjuk a MainActivity-t, hogy ne lehessen visszalépni a back gombbal
+        finish();
     }
 
     public void register(View view) {
         Intent intent = new Intent(this, RegisterActivity.class);
-        // Olvassuk ki az emailt a beviteli mezőből
-        String emailFromLogin = emailET.getText().toString().trim(); // trim() eltávolítja a felesleges szóközöket
+        String emailFromLogin = emailET.getText().toString().trim();
 
         // Adjuk át az emailt az Intent extra adataiként, ha nem üres
         if (!emailFromLogin.isEmpty()) {
-            intent.putExtra("USER_EMAIL", emailFromLogin); // Kulcs-érték pár
+            intent.putExtra("USER_EMAIL", emailFromLogin);
             Log.d(LOG_TAG, "Passing email to RegisterActivity: " + emailFromLogin);
         } else {
             Log.d(LOG_TAG, "Email field is empty, not passing to RegisterActivity.");
@@ -101,8 +99,8 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    // Lifecycle hook példa (nem kötelező most, de hasznos lehet)
-    // Mentjük az emailt, ha elhagyjuk az Activity-t (pl. elforgatás)
+
+    // Mentjük az emailt, ha elhagyjuk az Activity-t
     @Override
     protected void onPause() {
         super.onPause();
