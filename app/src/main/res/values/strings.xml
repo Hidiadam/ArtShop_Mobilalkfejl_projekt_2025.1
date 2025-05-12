@@ -21,7 +21,6 @@
     <string name="logout">Kijelentkezés</string>
     <string name="settings">Beállítások</string>
     <string name="add_artwork">Új mű</string> <!-- Új string -->
-    <string name="empty_list_message">Nincsenek megjeleníthető műalkotások.</string>
     <string name="artwork_image_description">Műalkotás képe</string>
     <string name="add_to_cart">Kosárba</string>
     <string name="artist_label">Alkotó: %1$s</string> <!-- Formázott string -->
@@ -72,4 +71,35 @@
         <item>@drawable/artwork_geometric</item>
     </array>
 
+    <string name="add_to_cart_short">Kosár</string> <!-- Rövidebb változat gombhoz -->
+    <string name="edit">Szerkesztés</string>
+    <string name="delete">Törlés</string>
+
+    <string name="empty_list_message">Nincs megjeleníthető műalkotás.\nAdj hozzá újat!</string>
+    <string name="filter_by_artist">Szűrés alkotóra</string>
+    <string name="sort">Rendezés</string>
+    <string name="sort_by_date_desc">Dátum (legújabb elöl)</string>
+    <string name="sort_by_artist_asc">Alkotó (A-Z)</string>
+    <string name="sort_by_price_asc">Ár (növekvő)</string>
+    <string name="sort_by_price_desc">Ár (csökkenő)</string>
+
+    <string name="artwork_title_hint">Műalkotás címe *</string>
+    <string name="artwork_artist_hint">Alkotó neve *</string>
+    <string name="artwork_description_hint">Leírás</string>
+    <string name="artwork_price_hint">Ár (Ft) *</string>
+    <string name="save_artwork">Műalkotás Mentése</string>
+    <string name="artwork_preview_image">Műalkotás előnézeti képe</string>
+    <string name="select_image_from_gallery">Kép választása galériából</string>
+    <string name="capture_image_with_camera">Kép készítése kamerával</string>
+    <string name="filter_all_artists">Minden alkotó</string>
+
+    <string name="cart_is_empty">A kosarad jelenleg üres.</string>
+    <string name="checkout_order">Megrendelés Leadása</string>
+    <string name="remove_from_cart">Eltávolítás a kosárból</string>
+    <string name="artwork_thumbnail">Műalkotás kis képe</string>
+    <string name="fullscreen_image_description">Teljes képernyős képnézet</string>
+    <string name="close_fullscreen">Bezárás</string>
+    <string name="total_price_label">Teljes ár:</string>
+
+    <string name="app_tagline">Világhírű művészeti alkotások kereskedelme</string>
 </resources>

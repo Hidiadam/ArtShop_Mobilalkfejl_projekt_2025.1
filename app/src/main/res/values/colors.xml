@@ -8,4 +8,5 @@
     <color name="black">#262626</color>         <!-- Meleg tónusú, sötét szürke háttér -->
     <color name="white">#F5F5F5</color>         <!-- Nagyon világos, meleg szürke (Off-white) - Szöveghez -->
     <color name="red_alert">#E57373</color>     <!-- Tompított Piros (Red 300) - Riasztáshoz -->
+    <color name="image_placeholder_background">#E0E0E0</color>
 </resources>

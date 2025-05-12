@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    tools:context=".ArtworkDetailActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.github.chrisbanes.photoview.PhotoView
+            android:id="@+id/imageViewDetail"
+            android:layout_width="0dp"
+            android:layout_height="300dp"
+            android:scaleType="fitCenter"
+            android:contentDescription="@string/artwork_image_description"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+        <ProgressBar
+            android:id="@+id/progressBarDetail"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@+id/imageViewDetail"
+            app:layout_constraintBottom_toBottomOf="@+id/imageViewDetail"
+            app:layout_constraintStart_toStartOf="@+id/imageViewDetail"
+            app:layout_constraintEnd_toEndOf="@+id/imageViewDetail"
+            tools:visibility="visible"/>
+
+
+        <TextView
+            android:id="@+id/textViewDetailTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:textAppearance="@style/TextAppearance.Material3.HeadlineSmall"
+            app:layout_constraintTop_toBottomOf="@id/imageViewDetail"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Műalkotás Részletes Címe" />
+
+        <TextView
+            android:id="@+id/textViewDetailArtist"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textAppearance="@style/TextAppearance.Material3.TitleMedium"
+            android:textStyle="italic"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDetailTitle"
+            app:layout_constraintStart_toStartOf="@+id/textViewDetailTitle"
+            app:layout_constraintEnd_toEndOf="@+id/textViewDetailTitle"
+            tools:text="Alkotó: Ismert Művész" />
+
+
+        <RatingBar
+            android:id="@+id/ratingBarDetail"
+            style="?android:attr/ratingBarStyleIndicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:numStars="5"
+            android:stepSize="0.1"
+            app:layout_constraintTop_toBottomOf="@+id/textViewDetailArtist"
+            app:layout_constraintStart_toStartOf="@+id/textViewDetailArtist"
+            tools:rating="4.5" />
+
+        <TextView
+            android:id="@+id/textViewDetailPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.Material3.TitleLarge"
+            android:textColor="?attr/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/textViewDetailArtist"
+            app:layout_constraintTop_toTopOf="@+id/ratingBarDetail"
+            app:layout_constraintBottom_toBottomOf="@+id/ratingBarDetail"
+            tools:text="150 000 Ft" />
+
+
+        <TextView
+            android:id="@+id/textViewDetailDescription"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+            app:layout_constraintTop_toBottomOf="@+id/ratingBarDetail"
+            app:layout_constraintStart_toStartOf="@+id/ratingBarDetail"
+            app:layout_constraintEnd_toEndOf="@+id/textViewDetailPrice"
+            app:layout_constraintBottom_toTopOf="@+id/buttonDetailAddToCart"
+            app:layout_constraintVertical_bias="0.0"
+            tools:text="Itt jelenik meg a műalkotás hosszabb, részletes leírása. Tartalmazhat információkat a technikáról, a méretről, a keletkezés körülményeiről és bármi másról, ami érdekes lehet a vásárló számára." />
+
+        <Button
+            android:id="@+id/buttonDetailAddToCart"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:text="@string/add_to_cart"
+            app:icon="@drawable/baseline_shopping_cart_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

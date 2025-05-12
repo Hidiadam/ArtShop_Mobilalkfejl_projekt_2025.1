@@ -6,4 +6,5 @@
     <dimen name="card_corner_radius">4dp</dimen>
     <dimen name="card_elevation">2dp</dimen>
     <dimen name="recycle_view_padding">4dp</dimen>
+    <dimen name="artwork_placeholder_padding">48dp</dimen>
 </resources>

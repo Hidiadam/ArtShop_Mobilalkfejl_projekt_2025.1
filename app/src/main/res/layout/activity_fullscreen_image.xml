@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/black"
+    tools:context=".FullscreenImageActivity">
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/fullscreen_photoview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@string/fullscreen_image_description"/>
+
+    <ProgressBar
+        android:id="@+id/progressBarFullscreen"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        tools:visibility="visible"/>
+
+    <ImageButton
+        android:id="@+id/buttonCloseFullscreen"
+        android:layout_width="36dp"         android:layout_height="36dp"
+        android:layout_gravity="top|end"    android:layout_marginTop="6dp"
+        android:layout_marginEnd="6dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/close_fullscreen"
+        android:padding="8dp"
+        android:scaleType="centerInside"
+        app:srcCompat="@drawable/baseline_close_24"
+        app:tint="@android:color/white" />
+
+</FrameLayout>

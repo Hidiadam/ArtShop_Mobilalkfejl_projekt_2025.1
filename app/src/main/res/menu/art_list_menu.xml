@@ -2,13 +2,23 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <!-- Keresés -->
     <item
         android:id="@+id/search_bar"
         android:icon="@drawable/baseline_search_24"
         android:title="@string/search"
-        app:actionViewClass="android.widget.SearchView"
-        app:showAsAction="always" />
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="always|collapseActionView" />
 
+    <!-- Szűrő Spinner -->
+    <item
+        android:id="@+id/filter_spinner_item"
+        android:icon="@drawable/baseline_filter_list_24"
+        android:title="@string/filter_by_artist"
+        app:actionLayout="@layout/filter_spinner"
+        app:showAsAction="always"/>
+
+    <!-- Kosár -->
     <item
         android:id="@+id/cart"
         android:icon="@drawable/baseline_shopping_cart_24"
@@ -16,28 +26,50 @@
         app:actionLayout="@layout/custom_menu_item"
         app:showAsAction="always" />
 
-
+    <!-- Új Elem Hozzáadása -->
     <item
         android:id="@+id/add_new_artwork"
         android:icon="@drawable/baseline_add_circle_24"
         android:title="@string/add_artwork"
         app:showAsAction="always" />
 
+    <!-- Kijelentkezés -->
     <item
         android:id="@+id/log_out_button"
         android:icon="@drawable/baseline_logout_24"
         android:title="@string/logout"
         android:orderInCategory="100"
-        app:showAsAction="always" />
+        app:showAsAction="ifRoom" />
 
-    <!-- Opcionális Beállítások menüpont -->
+    <!-- Rendezési Opciók (almenüben) -->
+    <item
+        android:id="@+id/sort_options"
+        android:icon="@drawable/baseline_sort_24"
+        android:title="@string/sort"
+        app:showAsAction="never"> <!-- Almenüként jelenik meg -->
+        <menu>
+            <item
+                android:id="@+id/sort_by_date"
+                android:title="@string/sort_by_date_desc" />
+            <item
+                android:id="@+id/sort_by_artist"
+                android:title="@string/sort_by_artist_asc" />
+            <item
+                android:id="@+id/sort_by_price_asc"
+                android:title="@string/sort_by_price_asc" />
+            <item
+                android:id="@+id/sort_by_price_desc"
+                android:title="@string/sort_by_price_desc" />
+        </menu>
+    </item>
+
+    <!-- Opcionális Beállítások -->
     <!--
     <item
         android:id="@+id/settings_button"
-        android:icon="@drawable/ic_settings"
         android:title="@string/settings"
         android:orderInCategory="99"
         app:showAsAction="never" />
-    -->
+     -->
 
 </menu>

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Itt adjuk meg, hogy az alkalmazás melyik belső/külső mappájához adunk hozzáférést -->
+    <!-- Az 'external-files-path' az getExternalFilesDir() által visszaadott útvonalra mutat -->
+    <external-files-path name="my_images" path="Pictures"/>
+    <!-- Más útvonalak is megadhatók itt, pl. cache: <cache-path name="cache_images" path="images/"/> -->
+</paths>

@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Spinner xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="?attr/actionBarSize"
+    style="@style/Widget.AppCompat.Spinner.DropDown"
+    android:background="@null"
+    android:popupBackground="?attr/colorSurface"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"/>
